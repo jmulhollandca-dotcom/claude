@@ -1,0 +1,8 @@
+space,name,regime,tier,exclusion,x0,y0,x1,y1
+EL001,Electrical Room 1,ESTRUXTURE,B,,60,420,260,560
+EL002,Electrical Room 2,GC,B,,260,420,460,560
+DH-A,Data Hall A,GC,A,OVR-004 wall penetrations open to 2026-11-05,60,140,460,420
+MMR1,Meet-Me Room 1,ESTRUXTURE,A,,460,420,620,560
+COR1,Corridor 1,ESTRUXTURE,C,,460,140,620,420
+MECH1,Mechanical Room 1,GC,C,,620,140,820,560
+OFF1,Office,,C,,60,40,820,140

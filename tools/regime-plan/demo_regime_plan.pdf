@@ -1,0 +1,212 @@
+%PDF-1.3
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+/OCProperties <<
+/OCGs [ 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R ]
+/D <<
+/Order [ 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R ]
+/ON [ 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R ]
+>>
+>>
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Resources <<
+/Properties <<
+/L0 5 0 R
+/L1 6 0 R
+/L2 7 0 R
+/L3 8 0 R
+/L4 9 0 R
+/L5 10 0 R
+/L6 11 0 R
+>>
+/ExtGState <<
+/GSa <<
+/Type /ExtGState
+/ca 0.3
+/CA 1
+>>
+>>
+/Font <<
+/F1 <<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+/F2 <<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+>>
+>>
+/MediaBox [ 0.0 0.0 1000 700 ]
+/Parent 2 0 R
+/Contents 12 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /OCG
+/Name (Base plan)
+>>
+endobj
+6 0 obj
+<<
+/Type /OCG
+/Name (GC areas)
+>>
+endobj
+7 0 obj
+<<
+/Type /OCG
+/Name (eStruxture areas)
+>>
+endobj
+8 0 obj
+<<
+/Type /OCG
+/Name (Not in package)
+>>
+endobj
+9 0 obj
+<<
+/Type /OCG
+/Name (Exclusions)
+>>
+endobj
+10 0 obj
+<<
+/Type /OCG
+/Name (Labels)
+>>
+endobj
+11 0 obj
+<<
+/Type /OCG
+/Name (Legend)
+>>
+endobj
+12 0 obj
+<<
+/Length 2989
+>>
+stream
+/OC /L0 BDC
+q 0 0 0 RG 1.5 w
+60.0 420.0 m 260.0 420.0 l 260.0 560.0 l 60.0 560.0 l h S
+260.0 420.0 m 460.0 420.0 l 460.0 560.0 l 260.0 560.0 l h S
+60.0 140.0 m 460.0 140.0 l 460.0 420.0 l 60.0 420.0 l h S
+460.0 420.0 m 620.0 420.0 l 620.0 560.0 l 460.0 560.0 l h S
+460.0 140.0 m 620.0 140.0 l 620.0 420.0 l 460.0 420.0 l h S
+620.0 140.0 m 820.0 140.0 l 820.0 560.0 l 620.0 560.0 l h S
+60.0 40.0 m 820.0 40.0 l 820.0 140.0 l 60.0 140.0 l h S
+Q
+EMC
+/OC /L1 BDC
+q /GSa gs 1.0 0.55 0.0 rg
+260.0 420.0 m 460.0 420.0 l 460.0 560.0 l 260.0 560.0 l h f
+60.0 140.0 m 460.0 140.0 l 460.0 420.0 l 60.0 420.0 l h f
+620.0 140.0 m 820.0 140.0 l 820.0 560.0 l 620.0 560.0 l h f
+Q
+EMC
+/OC /L2 BDC
+q /GSa gs 0.0 0.45 0.85 rg
+60.0 420.0 m 260.0 420.0 l 260.0 560.0 l 60.0 560.0 l h f
+460.0 420.0 m 620.0 420.0 l 620.0 560.0 l 460.0 560.0 l h f
+460.0 140.0 m 620.0 140.0 l 620.0 420.0 l 460.0 420.0 l h f
+Q
+EMC
+/OC /L3 BDC
+q 0.6 0.6 0.6 RG 2 w [6 4] 0 d
+60.0 40.0 m 820.0 40.0 l 820.0 140.0 l 60.0 140.0 l h S
+Q
+EMC
+/OC /L4 BDC
+q 0.85 0.0 0.0 RG 3 w
+60.0 140.0 m 460.0 140.0 l 460.0 420.0 l 60.0 420.0 l h S
+BT /F1 8 Tf 200.0 254.0 Td (OVR-004 wall penetrations open to 2026-1) Tj ET
+Q
+EMC
+/OC /L5 BDC
+q 0 0 0 rg
+BT /F2 11 Tf 130.0 494.0 Td (EL001) Tj ET
+BT /F1 8 Tf 130.0 482.0 Td (Electrical Room 1) Tj ET
+BT /F2 12 Tf 194.0 492.0 Td (B) Tj ET
+BT /F2 11 Tf 330.0 494.0 Td (EL002) Tj ET
+BT /F1 8 Tf 330.0 482.0 Td (Electrical Room 2) Tj ET
+BT /F2 12 Tf 394.0 492.0 Td (B) Tj ET
+BT /F2 11 Tf 230.0 284.0 Td (DH-A) Tj ET
+BT /F1 8 Tf 230.0 272.0 Td (Data Hall A) Tj ET
+BT /F2 12 Tf 294.0 282.0 Td (A) Tj ET
+BT /F2 11 Tf 510.0 494.0 Td (MMR1) Tj ET
+BT /F1 8 Tf 510.0 482.0 Td (Meet-Me Room 1) Tj ET
+BT /F2 12 Tf 574.0 492.0 Td (A) Tj ET
+BT /F2 11 Tf 510.0 284.0 Td (COR1) Tj ET
+BT /F1 8 Tf 510.0 272.0 Td (Corridor 1) Tj ET
+BT /F2 12 Tf 574.0 282.0 Td (C) Tj ET
+BT /F2 11 Tf 690.0 354.0 Td (MECH1) Tj ET
+BT /F1 8 Tf 690.0 342.0 Td (Mechanical Room 1) Tj ET
+BT /F2 12 Tf 754.0 352.0 Td (C) Tj ET
+BT /F2 11 Tf 410.0 94.0 Td (OFF1) Tj ET
+BT /F1 8 Tf 410.0 82.0 Td (Office) Tj ET
+BT /F2 12 Tf 474.0 92.0 Td (C) Tj ET
+Q
+EMC
+/OC /L6 BDC
+q 1 1 1 rg 0 0 0 RG 1 w 840 20 150 150 re B 0 0 0 rg
+BT /F2 9 Tf 846 156 Td (ROOM REGIME AND ACCESS CONTROL PLAN) Tj ET
+BT /F1 8 Tf 846 144 Td (DWG JV-RR-101  REV 03  2026-10-20) Tj ET
+BT /F1 7 Tf 846 133 Td (Issued for information. Governs site access from rev date.) Tj ET
+q /GSa gs 1.0 0.55 0.0 rg 846 112 14 10 re f Q BT /F1 8 Tf 864 114 Td (GC area  -  GC prime contractor) Tj ET
+q /GSa gs 0.0 0.45 0.85 rg 846 96 14 10 re f Q BT /F1 8 Tf 864 98 Td (eStruxture area  -  eStruxture prime) Tj ET
+q 0.6 0.6 0.6 RG 1.5 w [4 3] 0 d 846 80 14 10 re S Q BT /F1 8 Tf 864 82 Td (Not yet in an occupancy package) Tj ET
+q 0.85 0.0 0.0 RG 2 w 846 64 14 10 re S Q BT /F1 8 Tf 864 66 Td (Open exclusion / override, see schedule) Tj ET
+BT /F1 8 Tf 846 48 Td (Letter in room = security tier A/B/C) Tj ET
+BT /F1 7 Tf 846 30 Td (Layers: toggle in viewer. Print with all layers on.) Tj ET
+Q
+EMC
+endstream
+endobj
+xref
+0 13
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000113 00000 n 
+0000000352 00000 n 
+0000000748 00000 n 
+0000000798 00000 n 
+0000000847 00000 n 
+0000000904 00000 n 
+0000000959 00000 n 
+0000001010 00000 n 
+0000001058 00000 n 
+0000001106 00000 n 
+trailer
+<<
+/Size 13
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+4148
+%%EOF
