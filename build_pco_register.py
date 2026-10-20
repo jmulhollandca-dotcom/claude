@@ -17,10 +17,10 @@ PKB = "AP Package B site work (PO6246)"
 DA2 = "AP DA2 Design Assist / OFCI agreement"
 
 rows = [
- ["PCO-001", EST, "Y", "Texcan", "2766-CAL3-0002 (rev)", "Q-1018940 / OA 1750503", "GENERAL STOCK (DHA/DHE)",
+ ["PCO-001", PKB, "Y", "Texcan", "2766-CAL3-0002 (rev)", "Q-1018940 / OA 1750503", "GENERAL STOCK (DHA/DHE)",
   "751 m MV105 1C-750 35kV Cu EPR cable. Trevor: general stock, to be pulled for DHA/DHE in new year. Factory price adjustment to $211.44/m.",
   158791.44, "AP PO 2766 rev + Texcan OA 1750503 (tax 7,939.57 extra)", "Original approved 2026-10-05; revised PO awaiting Kylie",
-  "Future-phase stock, not Phase 1 Package B scope. Prysmian stock lengths 178/187/189/197 m, 2 wk delivery, +/-5% tolerance, price subject to tariff at shipment.", "2026-10-20"],
+  "AP paper: eStruxture has no account or PO with Texcan (John, 2026-10-20). Pass-through candidate AP to eStruxture: material supply only, no site work. Future-phase stock, not Phase 1 scope. Prysmian stock lengths 178/187/189/197 m, 2 wk delivery, +/-5% tolerance, price subject to tariff at shipment.", "2026-10-20"],
  ["PCO-002", EST, "Y", "Magna IV Engineering", "not yet issued", "Q-188471", "TP-DHC-01I (Nishi) / DH-D per Devon",
   "CAL-3 Phase 2 DHD MV terminations & testing, lump sum. Same scope as DHC. OEM lead times do not meet schedule; alternates offered.",
   119500.00, "Magna Q-188471 lump sum, excl. tax; extras at $135/hr blended", "Conditional (Kylie 2026-10-13): lead-time alternates must be confirmed",
