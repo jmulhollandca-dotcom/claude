@@ -21,10 +21,10 @@ rows = [
   "751 m MV105 1C-750 35kV Cu EPR cable. Trevor: general stock, to be pulled for DHA/DHE in new year. Factory price adjustment to $211.44/m.",
   158791.44, "AP PO 2766 rev + Texcan OA 1750503 (tax 7,939.57 extra)", "Original approved 2026-10-05; revised PO awaiting Kylie",
   "AP paper: eStruxture has no account or PO with Texcan (John, 2026-10-20). Pass-through candidate AP to eStruxture: material supply only, no site work. Future-phase stock, not Phase 1 scope. Prysmian stock lengths 178/187/189/197 m, 2 wk delivery, +/-5% tolerance, price subject to tariff at shipment.", "2026-10-20"],
- ["PCO-002", EST, "Y", "Magna IV Engineering", "not yet issued", "Q-188471", "TP-DHC-01I (Nishi) / DH-D per Devon",
+ ["PCO-002", PKB, "Y", "Magna IV Engineering", "not yet issued", "Q-188471", "TP-DHC-01I (Nishi) / DH-D per Devon",
   "CAL-3 Phase 2 DHD MV terminations & testing, lump sum. Same scope as DHC. OEM lead times do not meet schedule; alternates offered.",
   119500.00, "Magna Q-188471 lump sum, excl. tax; extras at $135/hr blended", "Conditional (Kylie 2026-10-13): lead-time alternates must be confirmed",
-  "Devon told Keith to proceed 2026-10-13. Nishi re-requested approval 2026-10-20 under TP-DHC-01I. PO not yet issued. Phase 2 scope: confirm whether this is a Package B change or owner-direct.", "2026-10-13 / 2026-10-20"],
+  "AP paper: Magna is not an active eStruxture trader on record. Pass-through candidate AP to eStruxture as Phase 2 scope. Devon told Keith to proceed 2026-10-13. Nishi re-requested approval 2026-10-20 under TP-DHC-01I. PO not yet issued.", "2026-10-13 / 2026-10-20"],
  ["PCO-003", PKB, "Y", "Magna IV Engineering", "2924-CAL3-0002", "Q-176183", "CAM-TMP-01",
   "CAL-3 temp power MV terminations & testing (June 2026 work). Original quote, PO issued 2026-10-20 after work done.",
   18950.00, "AP PO 2924 (matches Q-176183 total)", "Trevor approved quote 2026-06-13; PO issued 2026-10-20",
@@ -64,10 +64,10 @@ rows = [
  ["PCO-012", PKB, "N", "Unitray Systems", "2822-CAL3-0002 rev 3", "QT006732-1", "TP-CSB-04R",
   "Cable tray, fittings, rubber roof supports (30 x 457 mm, 20 x 244 mm), freight. Heat trace, fire alarm and exhaust fan access.",
   14767.11, "AP PO 2822 rev 3", "Approved 2026-10-14 (rev 3 lower than prior)", "Shipped to warehouse.", "2026-10-14"],
- ["PCO-013", EST, "Y", "Solution Control Systems", "2271-CAL3-002 / 2273-CAL3-0002 / CAL3-SCS26-2095 / CAL3-SCS26-2038", "Jonny Lee email 2026-07-22", "GEN LB camlock / UPS busducts",
+ ["PCO-013", PKB, "Y", "Solution Control Systems", "2271-CAL3-002 / 2273-CAL3-0002 / CAL3-SCS26-2095 / CAL3-SCS26-2038", "Jonny Lee email 2026-07-22", "GEN LB camlock / UPS busducts",
   "Camlocks sourced via US; cost impact $22k to $25k plus shipping and tariffs (SCS). Separate: battery cabinet covers crate to Edmonton for ground-bus modification, freight liability unresolved.",
   22000.00, "SCS estimate low end ($22k to $25k), not quoted", "No approval on record",
-  "OFCI vendor scope change. Who pays camlock premium and cover freight is open. CAL3-SCS26 numbers look like owner POs: confirm contract.", "2026-10-20"],
+  "AP paper: SCS is not an active eStruxture trader on record. OFCI vendor scope change; who pays camlock premium and cover freight is open. Pass-through candidate only if John directs.", "2026-10-20"],
  ["PCO-014", PKB, "N", "Anixter / Wesco", "pending", "Q00HQ9GG", "MR-TP-DHC-1E",
   "768 m 600 kcmil Cu RW90 + 900 m #2 Cu RW90 green. Alberta stock.",
   77485.20, "Anixter quote total", "Approved 2026-10-19", "Price valid 5 days, metal escalation. Flat deck freight extra.", "2026-10-19"],
@@ -162,7 +162,7 @@ ws3 = wb.create_sheet("Contracts")
 ws3.append(["Contract", "Parties", "Value CAD", "Source"])
 ws3.append(["Package B PO6246 (electrical subcontract, supplemental conditions)", "Leeswood Construction / AP Electric (CGL)", 72260828.62, "SoV memo 2026-08-27 (Attachment R4)"])
 ws3.append(["DA2 / OFCI Coordination Services Agreement", "eStruxture / CGL Inc. direct", 2739171.38, "SoV memo 2026-08-27 (Attachment R3)"])
-ws3.append(["eStruxture direct accounts", "eStruxture / vendor", None, "Owner-direct purchases (future phase stock, OFCI vendor changes)"])
+ws3.append(["eStruxture direct accounts", "eStruxture / vendor", None, "RULE (John, 2026-10-20): assign to eStruxture direct only where the vendor is an active trader with eStruxture, or John says so. Otherwise AP paper with pass-through flag."])
 
 # ---------------- Sheet 4: Bucket totals ----------------
 ws4 = wb.create_sheet("Totals")
