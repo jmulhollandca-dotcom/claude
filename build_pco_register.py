@@ -40,11 +40,11 @@ rows = [
  ["PCO-006", PKB, "Y", "Sunbelt Rentals", "2866-CAL3-0002", "Q-80525227 Rev 2", "TP-DHC-01H COMMISSIONING",
   "Rental 1 x 1250 kW 480 V resistive load bank + 48 x 50 ft cam cables + 16 pigtails, 4-week rate, 3rd-party freight delivery and return.",
   15729.00, "AP PO 2866 total", "Approved; PO sent 2026-10-16",
-  "Freight renegotiated (Nishi: cannot pay over $16k freight). UPS testing.", "2026-10-16"],
+  "Freight renegotiated (Nishi: cannot pay over $16k freight). UPS testing. NOTE: Sunbelt is an active eStruxture direct vendor (statement 7124887, Kylie approves) but this PO is AP paper; eligible to move to eStruxture direct if John says so.", "2026-10-16"],
  ["PCO-007", PKB, "Y", "Sunbelt Rentals", "2791", "Contract 80519077", "none",
   "Temp cooling: 2 x 5T portable AC, 400A cam distro, fan, duct, spider box cables, E&D labour, 4 weeks (Oct 14 to Nov 11). Two additional 5T units requested 2026-10-13 on new PO.",
   9687.55, "Sunbelt reservation 80519077 subtotal (GST 484.39 extra)", "Approved 2026-10-15",
-  "Second PO for 2 additional units not yet seen in folder.", "2026-10-15"],
+  "Second PO for 2 additional units not yet seen in folder. NOTE: Sunbelt is an active eStruxture direct vendor; this reservation is on AP PO 2791. Eligible to move to eStruxture direct if John says so.", "2026-10-15"],
  ["PCO-008", PKB, "Y", "JM Test Systems (BHD)", "2915-CAL3-0002", "RQ24624", "TP-DHC-1H",
   "Rental Fluke 1777 power quality analyzer + 3 x 6000A flex CTs, 28-day rate Oct 19 to Nov 15. Marty expects 3 months.",
   2295.00, "AP PO 2915 / RQ24624 (28 days only)", "Approved; PO sent 2026-10-19",
@@ -92,7 +92,8 @@ for r in rows:
 
 # ---------------- Sheet 2: Lot material requests (Package B, no PCO) ----------------
 ws2 = wb.create_sheet("Lot materials (Pkg B)")
-ws2.append(["Vendor", "Quote / bid", "Lot / tender pkg", "Note from thread", "Kylie approval", "Date", "Amount"])
+ws2.append(["Vendor", "Quote / bid", "Lot / tender pkg", "Note from thread", "Kylie approval", "Date", "Amount", "Contract charged"])
+EST_LOT_VENDORS = {"EWCL", "Bolt Supply", "Uline"}
 lots = [
  ["EWCL", "S1813982 / S1813988 / S1814008", "various", "Jeff Bosch chasing approval", "Pending", "2026-10-20", "in bid PDF"],
  ["EWCL", "S1814255", "TP-DHC-1A", "wire, 2 to 3 day ETA", "Pending", "2026-10-19", "in bid PDF"],
@@ -155,7 +156,30 @@ lots = [
  ["Westburn / Burndy", "LUGS.xlsx list", "various", "LLSCO lug shortage, 22+ wk leads; air freight option", "Open", "2026-10-20", "n/a"],
 ]
 for r in lots:
-    ws2.append(r)
+    ws2.append(r + [EST if r[0] in EST_LOT_VENDORS else PKB])
+
+
+# ---------------- Sheet: eStruxture active direct vendors (evidence) ----------------
+ws5 = wb.create_sheet("eStruxture vendors")
+ws5.append(["Vendor", "eStruxture PO / account", "Evidence (email, date)", "Scope at CAL3", "Touches this register?"])
+vendors = [
+ ["Electrical Wholesalers Calgary (EWCL)", "eStruxture account; weekly statements", "construction.finance@estruxture.com weekly statement EW20260914TO20260920, $186,536.52 of $2,672,221.04 total, approved by Kylie", "Electrical materials (lot bids S18xxxxx)", "Yes: all EWCL lot rows moved to eStruxture direct"],
+ ["The Bolt Supply House", "Account 76284, NO PO, activity code CAL3 Equipment", "construction.finance statement, Kylie approves", "Hardware / non-electrical consumables", "Yes: Bolt Supply lot row 9482309-00 moved to eStruxture direct"],
+ ["Sunbelt Rentals of Canada", "eStruxture account; statement 7124887", "construction.finance statement, Kylie approves", "Rentals (load banks, temp cooling)", "Partly: PCO-006/007 are on AP POs; eligible to move if John says so"],
+ ["Uline", "eStruxture account with credit limit / prepayments", "construction.finance thread", "Consumables", "Yes: Uline lot row moved to eStruxture direct"],
+ ["Binns Canada", "PO6588", "eStruxture PO", "Equipment", "No"],
+ ["Collicutt Energy", "PO4771; PO7907 ($104,450 COs)", "eStruxture PO emails", "Generators", "No"],
+ ["Kolostat", "PO7591 (Coreweave); piping POs; Master Mechanical PR00003132", "eStruxture PO emails", "Mechanical", "No"],
+ ["ASM Modular", "PO7183", "approval request email", "Modular", "No"],
+ ["Englobe", "PO6225", "approval request email", "Testing / inspection", "No"],
+ ["Tomecek Roney (TRL)", "eStruxture consultant agreement", "approval request email", "Structural", "No"],
+ ["WZMH", "eStruxture consultant agreement", "construction.finance thread", "Architecture", "No"],
+ ["Johnson Controls (JCI)", "PO7762", "eStruxture PO email", "Controls", "No"],
+ ["Leeswood Construction", "Progress applications", "construction.finance thread", "GC", "No"],
+ ["Bosch / Paladin / Rhinotek / DND / Smardt / Anjinnov / RJC / Pearl DCS", "various eStruxture POs / rent", "construction.finance threads", "Security, chillers, consultants, warehouse", "No"],
+]
+for v in vendors: ws5.append(v)
+ws5.append(["NOT eStruxture direct (no account/PO found)", "", "John 2026-10-20: Texcan is AP paper (pass-through possible). No eStruxture account found for Magna, Trinity, JM Test, Crystal, Rodeo, Phoenix, Unitray, SCS, Anixter, Noramco, Gescan, Graybar, EECOL, City Electric, EBH, Alberta Breaker.", "", "Stay on AP Package B unless John says otherwise"])
 
 # ---------------- Sheet 3: Contract summary ----------------
 ws3 = wb.create_sheet("Contracts")
@@ -174,9 +198,14 @@ for r in rows:
     if r[8]: tot[k][1] += r[8]
 for k, (c, a) in tot.items():
     ws4.append([k, c, round(a, 2)])
+ws4.append([])
+ws4.append(["Lot material rows (amounts in bid PDFs, not extracted)", "Count", ""])
+from collections import Counter
+lc = Counter(EST if r[0] in EST_LOT_VENDORS else PKB for r in lots)
+for k, c in lc.items(): ws4.append([k, c, None])
 
 # formatting
-for w in (ws, ws2, ws3, ws4):
+for w in (ws, ws2, ws5, ws3, ws4):
     for c in w[1]:
         c.font = Font(bold=True, color="FFFFFF"); c.fill = PatternFill("solid", fgColor="1F3864")
         c.alignment = Alignment(wrap_text=True, vertical="top")
@@ -186,7 +215,7 @@ for w in (ws, ws2, ws3, ws4):
     for i, col in enumerate(w.columns, 1):
         w.column_dimensions[get_column_letter(i)].width = 22
     w.freeze_panes = "A2"
-ws.column_dimensions["H"].width = 60; ws.column_dimensions["L"].width = 50
+ws5.column_dimensions["C"].width = 60; ws.column_dimensions["H"].width = 60; ws.column_dimensions["L"].width = 50
 for row in ws.iter_rows(min_row=2, min_col=9, max_col=9):
     for c in row: c.number_format = '#,##0.00'
 for row in ws3.iter_rows(min_row=2, min_col=3, max_col=3):
