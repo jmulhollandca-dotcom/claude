@@ -22,3 +22,9 @@ Standing rules: straight facts, no fluff. Nothing goes to an eStruxture direct a
 4. Diff by code, then normalized name: REF not in ACC, ACC not in REF, name/code mismatches. Write `ref_vs_acc_diff.md`, counts at top, one line per discrepancy.
 5. Add an "ACC location" column to the PCO Register and Lot materials sheets in `build_pco_register.py`, keyed on lot codes; regenerate the xlsx.
 6. Commit and push to the same branch. Report counts matched / missing each way and whether the load is complete.
+
+## Result (2026-10-20)
+
+- ACC Locations tree pulled live with the signed-in APS token: 486 nodes, 447 room-level nodes, 485 with barcodes. Saved as `acc_locations.csv` (id, parent, name, code, type, path).
+- Monday steps dropped on John's instruction during the run ("never mind monday we are done with it"). No REF export or REF-vs-ACC diff is kept.
+- `build_pco_register.py` now adds an "ACC location" column to the PCO Register and Lot materials sheets. Lot codes are AP tender packages (`TP-<block>-<package><letter>`); the package number is not a level, so each lot resolves to its ACC block node (name, barcode, node id). Rows with no block in the lot text are marked as not mapped.

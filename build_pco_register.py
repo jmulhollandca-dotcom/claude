@@ -4,11 +4,40 @@ from openpyxl.utils import get_column_letter
 
 wb = Workbook()
 
+# ---------------- ACC location lookup (keyed on lot codes) ----------------
+# Lot codes are AP tender packages: TP-<block>-<package><letter>. The number is a package
+# number, not a level, so the finest ACC location a lot maps to is the block node.
+import csv, os, re as _re
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ACC_BLOCKS = {}
+try:
+    for _a in csv.DictReader(open(os.path.join(_HERE, "acc_locations.csv"), encoding="utf-8")):
+        if _a["path"].count(">") == 1:          # Project > Block
+            _ACC_BLOCKS[_a["name"]] = _a
+except FileNotFoundError:
+    pass
+_ALIAS = {"CDB": "CSB", "DH-D": "DHD"}
+
+def acc_location(lot):
+    """Return the ACC location(s) for a lot / tender-package string, or a reason it has none."""
+    if not lot or lot.strip().lower() in ("n/a", "various"):
+        return "n/a: no lot code"
+    if "GENERAL STOCK" in lot.upper():
+        return "n/a: general stock, not a location"
+    hits = []
+    for m in _re.finditer(r"(?<![A-Z])(DH-D|CDB|CAM|CSB|DH[A-F])(?![A-Z])", lot.upper()):
+        b = _ALIAS.get(m.group(1), m.group(1))
+        if b not in hits: hits.append(b)
+    if not hits:
+        return "not mapped: no block in lot code"
+    return "; ".join(f"{b} ({_ACC_BLOCKS[b]['code']}, {_ACC_BLOCKS[b]['id']})" if b in _ACC_BLOCKS else f"{b} (block not in ACC tree)" for b in hits)
+
+
 # ---------------- Sheet 1: PCO register (money items) ----------------
 ws = wb.active
 ws.title = "PCO Register"
 hdr = ["PCO #", "Contract charged (proposed)", "Confirm?", "Vendor", "AP PO #", "Vendor quote / ref",
-       "Lot / tender pkg", "Scope", "Amount CAD (pre-tax)", "Amount basis", "Kylie approval",
+       "Lot / tender pkg", "ACC location", "Scope", "Amount CAD (pre-tax)", "Amount basis", "Kylie approval",
        "Status / open issue", "Source email (date)"]
 ws.append(hdr)
 
@@ -88,11 +117,11 @@ rows = [
   868.00, "Graybar quote: 828 + 40 freight (GST 43.40 extra)", "Approved 2026-10-20", "Remaining 200 to be sourced elsewhere.", "2026-10-20"],
 ]
 for r in rows:
-    ws.append(r)
+    ws.append(r[:7] + [acc_location(r[6])] + r[7:])
 
 # ---------------- Sheet 2: Lot material requests (Package B, no PCO) ----------------
 ws2 = wb.create_sheet("Lot materials (Pkg B)")
-ws2.append(["Vendor", "Quote / bid", "Lot / tender pkg", "Note from thread", "Kylie approval", "Date", "Amount", "Contract charged"])
+ws2.append(["Vendor", "Quote / bid", "Lot / tender pkg", "ACC location", "Note from thread", "Kylie approval", "Date", "Amount", "Contract charged"])
 EST_LOT_VENDORS = {"EWCL", "Bolt Supply", "Uline"}
 lots = [
  ["EWCL", "S1813982 / S1813988 / S1814008", "various", "Jeff Bosch chasing approval", "Pending", "2026-10-20", "in bid PDF"],
@@ -156,7 +185,7 @@ lots = [
  ["Westburn / Burndy", "LUGS.xlsx list", "various", "LLSCO lug shortage, 22+ wk leads; air freight option", "Open", "2026-10-20", "n/a"],
 ]
 for r in lots:
-    ws2.append(r + [EST if r[0] in EST_LOT_VENDORS else PKB])
+    ws2.append(r[:3] + [acc_location(r[2])] + r[3:] + [EST if r[0] in EST_LOT_VENDORS else PKB])
 
 
 # ---------------- Sheet: eStruxture active direct vendors (evidence) ----------------
@@ -215,14 +244,14 @@ for w in (ws, ws2, ws5, ws3, ws4):
     for i, col in enumerate(w.columns, 1):
         w.column_dimensions[get_column_letter(i)].width = 22
     w.freeze_panes = "A2"
-ws5.column_dimensions["C"].width = 60; ws.column_dimensions["H"].width = 60; ws.column_dimensions["L"].width = 50
-for row in ws.iter_rows(min_row=2, min_col=9, max_col=9):
+ws5.column_dimensions["C"].width = 60; ws.column_dimensions["H"].width = 34; ws.column_dimensions["I"].width = 60; ws.column_dimensions["M"].width = 50; ws2.column_dimensions["D"].width = 34
+for row in ws.iter_rows(min_row=2, min_col=10, max_col=10):
     for c in row: c.number_format = '#,##0.00'
 for row in ws3.iter_rows(min_row=2, min_col=3, max_col=3):
     for c in row: c.number_format = '#,##0.00'
 for row in ws4.iter_rows(min_row=2, min_col=3, max_col=3):
     for c in row: c.number_format = '#,##0.00'
 
-wb.save("/home/user/claude/CAL3_PCO_Register_2026-10-20.xlsx")
+wb.save(os.path.join(_HERE, "CAL3_PCO_Register_2026-10-20.xlsx"))
 print("rows", len(rows), "lots", len(lots))
 for k, v in tot.items(): print(k, v)
